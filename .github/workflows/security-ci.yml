@@ -20,9 +20,9 @@ jobs:
           pip install safety bandit
 
       - name: Run Tests
-         env:
-          PYTHONPATH: ${{ github.workspace }}
-        run: python -m pytest tests/ -v
+         run: |
+          export PYTHONPATH="$GITHUB_WORKSPACE"
+          python -m pytest tests/ -v
 
       - name: Security Check 1 - Dependency Scan
         run: |
